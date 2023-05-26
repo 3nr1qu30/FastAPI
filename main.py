@@ -25,6 +25,6 @@ async def index(file: UploadFile = File(...)):
 
     with open("audio.wav", "wb") as audio_file:
         audio_file.write(contents)
-
+    print(contents)
     return FileResponse("audio.wav", filename="audio.wav")
 
