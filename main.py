@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Request
 from starlette.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -20,8 +20,8 @@ app.add_middleware(
 
 
 @app.post("/")
-async def index(fileee: UploadFile = File(...)):
-    contents = await fileee.read()
+async def index(file: UploadFile = File(...)):
+    contents = await file.read()
 
     with open("audio.wav", "wb") as audio_file:
         audio_file.write(contents)
