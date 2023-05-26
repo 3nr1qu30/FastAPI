@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI, UploadFile, File
 from starlette.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
