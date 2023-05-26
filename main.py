@@ -12,6 +12,7 @@ app= FastAPI()
 # Configurar los orígenes permitidos en CORS
 origins = [
     "http://localhost:8080",
+    "https://lyra-production.up.railway.app/"
     # Agrega aquí los demás orígenes permitidos
 ]
 
