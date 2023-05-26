@@ -38,7 +38,7 @@ async def index(audio_data: AudioData):
     print(audio_decoded)
 
     # Guardar el audio decodificado en un archivo WAV
-    with wave.open("audio.wav", "w") as wav_file:
+    with wave.open("audio.wav", "wb") as wav_file:
         wav_file.setnchannels(1)  # Configurar el número de canales (mono)
         wav_file.setsampwidth(2)  # Configurar el ancho de muestra en bytes (2 bytes para 16 bits)
         wav_file.setframerate(44100)  # Configurar la frecuencia de muestreo (44.1 kHz)
