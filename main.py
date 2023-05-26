@@ -1,17 +1,15 @@
 from fastapi import FastAPI, UploadFile
 from starlette.responses import FileResponse
-
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 # Configurar los orígenes permitidos en CORS
 origins = [
-
     "https://lyra-production.up.railway.app"
     # Agrega aquí los demás orígenes permitidos
 ]
 
 # Agregar el middleware de CORS a la aplicación
-from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -19,7 +17,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 
 @app.post("/")
