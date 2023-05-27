@@ -28,7 +28,7 @@ class TranscriptionData(BaseModel):
 async def index(data: TranscriptionData):
     transcription = data.transcription
     print(transcription)
-    openai.api_key = "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"
+    openai.api_key = "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"
     response =await openai.Completion.create(
     model="text-davinci-003",
     prompt=transcription + "\n\nTl;dr",
