@@ -1,5 +1,5 @@
-from fastapi import FastAPI, UploadFile, File, Request
-from starlette.responses import FileResponse
+from fastapi import FastAPI
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -19,8 +19,14 @@ app.add_middleware(
 )
 
 
-@app.post("/")
-async def index(transcription: Request):
-     yoesamamiloca = await transcription.form()
-     print(yoesamamiloca)
+class TranscriptionData(BaseModel):
+    transcription: str
 
+@app.post("/")
+async def index(data: TranscriptionData):
+    transcription = data.transcription
+    print(transcription)
+
+    # Aquí puedes hacer lo que necesites con la transcripción recibida
+
+    return {"message": "Transcription received"}
