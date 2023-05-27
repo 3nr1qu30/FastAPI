@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+import os
+import openai
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -27,6 +29,17 @@ async def index(data: TranscriptionData):
     transcription = data.transcription
     print(transcription)
 
-    # Aquí puedes hacer lo que necesites con la transcripción recibida
+    openai.api_key = os.getenv("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")
 
+    response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=transcription + "\n\nTl;dr",
+    temperature=0.7,
+    max_tokens=60,
+    top_p=1.0,
+    frequency_penalty=0.0,
+    presence_penalty=1
+    )
+    print(response)
+        # Aquí puedes hacer lo que necesites con la transcripción recibida
     return {"message": "Transcription received"}
