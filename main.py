@@ -21,5 +21,6 @@ app.add_middleware(
 
 @app.post("/")
 async def index(transcription: Request):
-     print(transcription)
+     yoesamamiloca = await transcription.form()
+     print(yoesamamiloca)
 
