@@ -20,11 +20,6 @@ app.add_middleware(
 
 
 @app.post("/")
-async def index(fileee: UploadFile = File(...)):
-    contents = await fileee.read()
-
-    with open("audio.wav", "wb") as audio_file:
-        audio_file.write(contents)
-    print(contents)
-    return FileResponse("audio.wav", filename="audio.wav")
+async def index(transcription: Request):
+     print(transcription)
 
